@@ -56,7 +56,6 @@
     text-align: center;
   }
   .rings {
-    margin: 0 auto 28px;
     width: 96px;
     height: 96px;
   }
@@ -97,13 +96,6 @@
     border: 1px solid var(--border);
     border-radius: 18px;
     padding: 20px 24px;
-  }
-  .app-card .dot {
-    flex-shrink: 0;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--teal);
   }
   .app-card h3 {
     margin: 0 0 4px;
@@ -162,29 +154,27 @@
 
 <main>
   <div class="hero">
-    <svg class="rings" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="48" cy="48" r="32" stroke="#4fd1c5" stroke-opacity="0.35" stroke-width="2.5" />
-      <circle cx="48" cy="48" r="21" stroke="#4fd1c5" stroke-opacity="0.65" stroke-width="3.5" />
-      <circle cx="48" cy="48" r="11" fill="#4fd1c5" />
-    </svg>
     <h1>Elevz</h1>
-    <p>Um estúdio independente criando produtos digitais simples e bem pensados — começando por jogos, sem se limitar a eles.</p>
+    <p>Uma empresa de software focada no desenvolvimento de aplicativos mobile.</p>
   </div>
 
   <section class="sobre">
     <h2>Sobre</h2>
     <p>
-      A Elevz nasceu pra colocar no mundo ideias pequenas, feitas com cuidado.
-      Hoje o foco está em jogos mobile com mecânicas simples e um pouco de
-      identidade própria, mas a marca não é exclusiva de jogos — é o guarda-chuva
-      pra tudo que vier a seguir.
+      A Elevz é uma empresa de software focada no desenvolvimento de aplicativos
+      mobile. Nosso trabalho é criar produtos simples, bem pensados e com atenção
+      aos detalhes — do primeiro rascunho até o que chega nas mãos de quem usa.
     </p>
   </section>
 
   <section class="apps">
     <h2>Apps</h2>
     <div class="app-card">
-      <div class="dot"></div>
+      <svg class="rings" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="48" cy="48" r="32" stroke="#4fd1c5" stroke-opacity="0.35" stroke-width="2.5" />
+        <circle cx="48" cy="48" r="21" stroke="#4fd1c5" stroke-opacity="0.65" stroke-width="3.5" />
+        <circle cx="48" cy="48" r="11" fill="#4fd1c5" />
+      </svg>
       <div>
         <h3>Eco<span class="badge">BETA</span></h3>
         <p>Jogo de reflexo e planejamento: seus comandos só executam 1 segundo depois.</p>
