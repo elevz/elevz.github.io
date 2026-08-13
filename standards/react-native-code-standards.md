@@ -26,7 +26,7 @@ Distinção importante: o **nome do arquivo** segue kebab-case com sufixo indica
 |---|---|---|---|
 | Pasta de feature | `kebab-case` | `user-profile/` | — |
 | Tela | `kebab-case` + `.screen.tsx` | `user-profile.screen.tsx` | `UserProfileScreen` |
-| Hook | `kebab-case` + `.hook.ts`, prefixo `use-` | `use-user-profile.hook.ts` | `useUserProfile` |
+| Hook | `kebab-case`, prefixo `use-` (sem sufixo adicional — o prefixo já identifica o arquivo) | `use-user-profile.ts` | `useUserProfile` |
 | Componente | `kebab-case` + `.component.tsx` | `profile-card.component.tsx` | `ProfileCard` |
 | Serviço | `kebab-case` + `.service.ts` | `analytics.service.ts` | `AnalyticsService` |
 | Repositório | `kebab-case` + `.repository.ts` | `user-mmkv.repository.ts` | `UserRepositoryMMKV` |
@@ -80,7 +80,7 @@ interface User {
   /features
     /user-profile
       user-profile.screen.test.tsx
-      use-user-profile.hook.test.ts
+      use-user-profile.test.ts
       /components
         profile-card.component.test.tsx
   /services
@@ -100,7 +100,7 @@ interface User {
   /features
     /user-profile
       user-profile.screen.tsx
-      use-user-profile.hook.ts
+      use-user-profile.ts
       /components
         profile-card.component.tsx
   /services
@@ -159,15 +159,21 @@ Organização por **feature**, isolando tela (layout), lógica (hook) e componen
   /features
     /<feature-name>
       <feature-name>.screen.tsx
-      use-<feature-name>.hook.ts
+      use-<feature-name>.ts
       /components
-        <local-component>.component.tsx
+        <local-component>.tsx
   /components
-    button.component.tsx
-    screen-container.component.tsx
-    text.component.tsx
+    /layout
+      card.tsx
+      screen.tsx
+    /form
+      button.tsx
+      text.tsx
+    /overlay
+      modal.tsx
+      alert.tsx
   /hooks
-    use-theme.hook.ts
+    use-theme.ts
   /services
     /storage
       <entity>.repository.ts
@@ -177,17 +183,21 @@ Organização por **feature**, isolando tela (layout), lógica (hook) e componen
       navigation.types.ts
   /store
     <entity>.store.ts
+    /<entity>
+      <entity>.types.ts
+      use-<entity>.ts
+      <entity>.store.ts
   /theme
-    colors.theme.ts
-    tokens.theme.ts
+    colors.ts
+    tokens.ts
   /constants
-    strings.constants.ts
-    storage-keys.constants.ts
-    limits.constants.ts
+    strings.ts
+    storage-keys.ts
+    limits.ts
   /types
-    <entity>.types.ts
+    <entity>.ts
   /utils
-    validators.util.ts
+    validators.ts
 App.tsx
 /__tests__
   (espelha /src, ver seção 6.1)
