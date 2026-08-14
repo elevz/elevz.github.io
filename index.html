@@ -116,6 +116,11 @@
   .app-card a:hover {
     text-decoration: underline;
   }
+  .app-card-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
   .badge {
     display: inline-block;
     margin-left: 8px;
@@ -253,7 +258,10 @@
       <div>
         <h3>Eco<span class="badge">BETA</span></h3>
         <p>Jogo de reflexo e planejamento: seus comandos só executam 1 segundo depois.</p>
-        <a href="/eco/privacy.html">Política de privacidade →</a>
+        <div class="app-card-links">
+          <a href="https://play.google.com/store/apps/details?id=com.eco.br">Play Store →</a>
+          <a href="/eco/privacy.html">Política de privacidade →</a>
+        </div>
       </div>
     </div>
     <div class="app-card">
