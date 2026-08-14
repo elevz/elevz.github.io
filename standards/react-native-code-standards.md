@@ -248,32 +248,27 @@ class EntityRepositoryMMKV implements EntityRepository { /* ... */ }
 ---
 
 ## 11. Commits
-
-- Seguir o padrão **Conventional Commits**: `<type>(<scope opcional>): <description>`.
-- `type` sempre em inglês, minúsculo, dentre os valores abaixo:
-
+ 
+Seguir **Conventional Commits**: `<type>(<scope>): <description>`.
+ 
 | Tipo | Uso |
 |---|---|
 | `feat` | Nova funcionalidade |
 | `fix` | Correção de bug |
-| `refactor` | Mudança de código sem alterar comportamento externo |
-| `test` | Adição ou ajuste de testes |
-| `chore` | Manutenção que não afeta código de produção (configuração, dependências) |
-| `docs` | Mudança em documentação |
-| `style` | Formatação, espaçamento — sem mudança de lógica |
-| `perf` | Melhoria de performance |
-| `build` | Mudança relacionada a build ou dependências externas |
-| `ci` | Mudança em configuração de integração contínua |
-
-- `description` em inglês, no imperativo presente (`add`, não `added` ou `adds`), começando em minúsculo, sem ponto final.
-- `scope` opcional identifica a feature ou camada afetada, alinhado aos nomes de pasta definidos na seção 8 (ex: `user-profile`, `storage`, `theme`).
-- Breaking changes: adicionar `!` após o tipo/escopo (`feat(storage)!: change repository interface`) e detalhar o impacto no corpo do commit.
-- Corpo do commit (opcional, linha em branco após a primeira linha) explica o "porquê" da mudança quando não for óbvio — não repete o "o quê", que já está no título.
-
+| `refactor` | Mudança sem alterar comportamento |
+| `test` | Testes |
+| `chore` | Manutenção (config, dependências) |
+| `docs` | Documentação |
+| `style` | Formatação |
+| `perf` | Performance |
+| `build` | Build/dependências |
+| `ci` | Integração contínua |
+ 
+- Tudo em inglês, imperativo, minúsculo, sem ponto final.
+- `scope` opcional = nome da feature/camada (ex: `storage`, `theme`).
+- Breaking change: `!` após o tipo (`feat(storage)!: change repository interface`).
 ```
 feat(user-profile): add avatar upload support
 fix(storage): handle missing file on repository read
-refactor(theme): extract spacing tokens from color file
-test(validators): cover empty string edge case
 chore: update react-native to 0.76
 ```
