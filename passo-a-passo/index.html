@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Passo a Passo – Crie seus próprios tutoriais</title>
+<meta name="description" content="Passo a Passo é um app Android para criar tutoriais em passos simples, com fotos, vídeos e áudios, e seguir um passo de cada vez." />
+<meta property="og:title" content="Passo a Passo" />
+<meta property="og:description" content="Crie seus próprios tutoriais em passos simples, com fotos, vídeos e áudios." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://elevz.github.io/passo-a-passo/img/1-home.jpg" />
+<meta name="theme-color" content="#FBF5EC" />
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #FBF5EC;
+    --surface: #FFFCF8;
+    --text: #291C15;
+    --text-muted: #776559;
+    --border: #E3D9CD;
+    --primary: #CD633C;
+    --primary-tint: #FCEEE6;
+    --ink: #2B1E19;
+    --ink-foreground: #F9F4EC;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: var(--primary); }
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  header {
+    padding: 24px 0 0;
+  }
+  header a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  header a:hover { color: var(--primary); }
+  .hero {
+    padding: 56px 0 48px;
+    text-align: center;
+  }
+  .logo {
+    width: 112px;
+    height: 112px;
+    display: block;
+    margin: 0 auto 24px;
+    filter: drop-shadow(0 8px 20px rgba(43, 30, 25, 0.18));
+  }
+  .hero h1 {
+    margin: 0 0 8px;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  .hero p {
+    max-width: 480px;
+    margin: 0 auto 32px;
+    color: var(--text-muted);
+    font-size: 18px;
+  }
+  .play-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--ink);
+    color: var(--ink-foreground);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 14px 26px;
+    border-radius: 999px;
+  }
+  .play-button:hover { background: var(--primary); }
+  .play-button svg { width: 20px; height: 20px; }
+  section {
+    padding: 48px 0;
+    border-top: 1px solid var(--border);
+  }
+  h2 {
+    margin: 0 0 24px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--primary);
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .feature {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 20px;
+  }
+  .feature-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary-tint);
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .feature h3 {
+    margin: 0 0 6px;
+    font-size: 17px;
+  }
+  .feature p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+  .screens {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 12px;
+    margin: 0 -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .screens img {
+    flex: 0 0 auto;
+    width: 216px;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    scroll-snap-align: center;
+    background: var(--surface);
+  }
+  .credit {
+    margin: 8px 0 0;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .cta {
+    text-align: center;
+  }
+  .cta p {
+    margin: 0 0 24px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0 48px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  footer nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-bottom: 12px;
+  }
+  footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  footer a:hover { color: var(--primary); }
+  @media (min-width: 760px) {
+    .screens {
+      margin: 0;
+      padding: 0;
+      overflow: visible;
+    }
+    .screens img {
+      flex: 1 1 0;
+      min-width: 0;
+      width: auto;
+    }
+  }
+  @media (max-width: 480px) {
+    .hero { padding: 40px 0 40px; }
+    .hero h1 { font-size: 32px; }
+    .hero p { font-size: 16px; }
+    .screens img { width: 180px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="/">← Elevz</a>
+  </header>
+
+  <main>
+    <div class="hero">
+      <svg class="logo" viewBox="0 0 512 512" role="img" aria-label="Logo do Passo a Passo" xmlns="http://www.w3.org/2000/svg">
+        <rect width="512" height="512" rx="112" fill="#CD633C" />
+        <path d="M116 396V316H216V216H316V116H396V396Z" fill="#2B1E19" stroke="#2B1E19" stroke-width="20" stroke-linejoin="round" />
+      </svg>
+      <h1>Passo a Passo</h1>
+      <p>Crie seus próprios tutoriais em passos simples, com fotos, vídeos e áudios, e siga um passo de cada vez.</p>
+      <a class="play-button" href="https://play.google.com/store/apps/details?id=com.passos.br">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 2.5v19a1 1 0 0 0 1.5.86l16-9.5a1 1 0 0 0 0-1.72l-16-9.5A1 1 0 0 0 4 2.5Z" /></svg>
+        Baixar na Google Play
+      </a>
+    </div>
+
+    <section>
+      <h2>O que dá para fazer</h2>
+      <div class="features">
+        <div class="feature">
+          <span class="feature-number">1</span>
+          <h3>Divida em passos</h3>
+          <p>Cada tutorial vira uma sequência de passos, com título e descrição.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-number">2</span>
+          <h3>Mostre como se faz</h3>
+          <p>Adicione fotos, vídeos e áudios em cada passo, da câmera, da galeria ou gravados na hora.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-number">3</span>
+          <h3>Siga um passo de cada vez</h3>
+          <p>O modo leitura mostra um passo por tela, para acompanhar com calma.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-number">4</span>
+          <h3>Tudo no seu aparelho</h3>
+          <p>Sem cadastro e sem login. Seus tutoriais ficam salvos no seu celular.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Telas</h2>
+      <div class="screens">
+        <img src="img/1-home.jpg" alt="Lista de tutoriais no app" width="540" height="960" loading="lazy" />
+        <img src="img/2-detail.jpg" alt="Tutorial aberto, com a lista de passos" width="540" height="960" loading="lazy" />
+        <img src="img/3-form.jpg" alt="Edição de um passo, com fotos e áudio" width="540" height="960" loading="lazy" />
+        <img src="img/4-reading.jpg" alt="Modo leitura mostrando o primeiro passo" width="540" height="960" loading="lazy" />
+        <img src="img/5-done.jpg" alt="Tela de tutorial concluído" width="540" height="960" loading="lazy" />
+      </div>
+      <p class="credit">Fotos de exemplo: Wikimedia Commons.</p>
+    </section>
+
+    <section class="cta">
+      <p>Comece seu primeiro tutorial</p>
+      <a class="play-button" href="https://play.google.com/store/apps/details?id=com.passos.br">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 2.5v19a1 1 0 0 0 1.5.86l16-9.5a1 1 0 0 0 0-1.72l-16-9.5A1 1 0 0 0 4 2.5Z" /></svg>
+        Baixar na Google Play
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <nav>
+      <a href="/passo-a-passo/politica-de-privacidade.html">Política de privacidade</a>
+      <a href="/">Elevz</a>
+      <a href="mailto:elevzapps@gmail.com">elevzapps@gmail.com</a>
+    </nav>
+    © 2026 Elevz
+  </footer>
+</div>
+</body>
+</html>
