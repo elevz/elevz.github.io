@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Excluir seus dados – Passo a Passo</title>
+<meta name="description" content="Solicite a exclusão dos seus dados do app Passo a Passo, da Elevz." />
+<meta name="theme-color" content="#FBF5EC" />
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #FBF5EC;
+    --surface: #FFFCF8;
+    --text: #291C15;
+    --text-muted: #776559;
+    --border: #E3D9CD;
+    --muted: #F3ECE1;
+    --primary: #CD633C;
+    --primary-tint: #FCEEE6;
+    --ink: #2B1E19;
+    --ink-foreground: #F9F4EC;
+    --danger: #C0392B;
+    --success: #3F7A47;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: var(--primary); }
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 24px 0 0;
+  }
+  .lang {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 3px 3px 3px 10px;
+  }
+  .lang-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+    margin-right: 2px;
+  }
+  .lang button {
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-muted);
+    border-radius: 999px;
+    min-height: 32px;
+    padding: 4px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .lang button:hover { color: var(--primary); }
+  @media (max-width: 420px) {
+    .lang button { padding: 4px 8px; font-size: 12px; }
+  }
+  .lang button[aria-pressed="true"] {
+    background: var(--primary-tint);
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+  header a {
+    white-space: nowrap;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  header a:hover { color: var(--primary); }
+  .intro {
+    padding: 40px 0 8px;
+  }
+  .eyebrow {
+    margin: 0 0 4px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+  h1 {
+    margin: 0 0 12px;
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+  .intro p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 17px;
+  }
+  section {
+    margin-top: 32px;
+  }
+  h2 {
+    margin: 0 0 8px;
+    font-size: 18px;
+  }
+  section p, section li {
+    font-size: 15px;
+    color: var(--text);
+  }
+  section p { margin: 0 0 8px; }
+  ul, ol { margin: 0; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+  .muted { color: var(--text-muted); }
+  .form-card {
+    margin-top: 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px 20px;
+  }
+  .form-card h2 {
+    margin-bottom: 4px;
+  }
+  .form-card > p {
+    margin: 0 0 20px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .row { margin-bottom: 16px; }
+  .row label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .row .hint {
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .row input[type="email"],
+  .row input[type="text"],
+  .row textarea {
+    width: 100%;
+    background: var(--muted);
+    border: 1px solid transparent;
+    border-radius: 14px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 15px;
+    resize: vertical;
+  }
+  .row input:focus,
+  .row textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--surface);
+  }
+  .check {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+  .check input {
+    width: 20px;
+    height: 20px;
+    margin: 2px 0 0;
+    accent-color: var(--primary);
+    flex: 0 0 auto;
+  }
+  .honey {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .submit {
+    width: 100%;
+    background: var(--ink);
+    color: var(--ink-foreground);
+    border: none;
+    border-radius: 999px;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .submit:hover { background: var(--primary); }
+  .submit:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+  .status {
+    margin: 12px 0 0;
+    font-size: 14px;
+    min-height: 1.2em;
+  }
+  .status--ok { color: var(--success); }
+  .status--error { color: var(--danger); }
+  footer {
+    margin-top: 48px;
+    border-top: 1px solid var(--border);
+    padding: 24px 0 40px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  footer nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    margin-bottom: 12px;
+  }
+  footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  footer a:hover { color: var(--primary); }
+  @media (max-width: 480px) {
+    .intro { padding-top: 28px; }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="/passo-a-passo/" data-i18n="back">← Passo a Passo</a>
+    <div class="lang" role="group" aria-label="Idioma · Language · Idioma">
+      <svg class="lang-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm0 0c2.5 2.4 3.8 5.4 3.8 9s-1.3 6.6-3.8 9m0-18C9.5 5.4 8.2 8.4 8.2 12s1.3 6.6 3.8 9M3.5 9h17M3.5 15h17"/></svg>
+      <button type="button" data-lang="pt" lang="pt-BR" aria-label="Português">Português</button>
+      <button type="button" data-lang="en" lang="en" aria-label="English">English</button>
+      <button type="button" data-lang="es" lang="es" aria-label="Español">Español</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="intro">
+      <p class="eyebrow">Passo a Passo · Elevz</p>
+      <h1 data-i18n="title">Excluir seus dados</h1>
+      <p data-i18n="intro">Use o formulário abaixo para pedir que a Elevz apague os dados do app Passo a Passo guardados nos nossos servidores.</p>
+    </div>
+
+    <section>
+      <h2 data-i18n="deviceTitle">O que fica no seu aparelho</h2>
+      <p data-i18n="deviceText">Os tutoriais, as fotos, os vídeos, os áudios e o idioma escolhido ficam só no seu celular e nunca são enviados para nós. Para apagá-los, exclua o tutorial no app ou desinstale o Passo a Passo.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="deletedTitle">O que este formulário exclui</h2>
+      <p data-i18n="deletedText">As sugestões, problemas e elogios que você enviou pelo app informando o seu email, com tudo o que foi junto:</p>
+      <ul>
+        <li data-i18n="deletedItem1">o texto da mensagem;</li>
+        <li data-i18n="deletedItem2">o email informado, se você preencheu;</li>
+        <li data-i18n="deletedItem3">a versão do app e do Android, o modelo do aparelho e o idioma do app.</li>
+      </ul>
+      <p class="muted" data-i18n="anonymousNote">Sugestões enviadas sem email são anônimas: não guardam nada que identifique você.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="notKeptTitle">O que não guardamos</h2>
+      <p data-i18n="notKeptText">As estatísticas de uso do Firebase Analytics não identificam você e são apagadas automaticamente pelo Google em até 2 meses. O código usado para enviar notificações deixa de valer quando você desinstala o app. Nenhum desses dados é mantido pela Elevz.</p>
+    </section>
+
+    <section>
+      <h2 data-i18n="howTitle">Como funciona</h2>
+      <ol>
+        <li data-i18n="how1">Preencha e envie o formulário.</li>
+        <li data-i18n="how2">Localizamos e apagamos os seus dados em até 30 dias.</li>
+        <li data-i18n="how3">Você recebe a confirmação no email informado.</li>
+      </ol>
+    </section>
+
+    <form class="form-card" id="deletion-form" novalidate>
+      <h2 data-i18n="formTitle">Solicitar exclusão</h2>
+      <p data-i18n="formWarning">Os dados apagados não podem ser recuperados.</p>
+
+      <div class="row">
+        <label for="df-email"><span data-i18n="emailLabel">Seu email</span>
+          <span class="hint" data-i18n="emailHint">Use o mesmo email que você informou ao enviar sugestões pelo app. A confirmação será enviada para ele.</span>
+        </label>
+        <input type="email" id="df-email" name="email" autocomplete="email" required />
+      </div>
+
+      <div class="row">
+        <label for="df-check" id="df-check-label">Quanto é ...?</label>
+        <input type="text" id="df-check" name="check" inputmode="numeric" autocomplete="off" required />
+      </div>
+
+      <label class="check">
+        <input type="checkbox" id="df-confirm" name="confirm" required />
+        <span data-i18n="confirm">Quero que meus dados do Passo a Passo sejam excluídos.</span>
+      </label>
+
+      <div class="honey" aria-hidden="true">
+        <label for="df-website">Deixe este campo em branco</label>
+        <input type="text" id="df-website" name="_honey" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <button type="submit" class="submit" data-i18n="submit">Enviar solicitação</button>
+      <p class="status" id="df-status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <footer>
+    <nav>
+      <a href="/passo-a-passo/politica-de-privacidade.html" data-i18n="privacy">Política de privacidade</a>
+      <a href="/passo-a-passo/">Passo a Passo</a>
+      <a href="/">Elevz</a>
+      <a href="mailto:elevzapps@gmail.com">elevzapps@gmail.com</a>
+    </nav>
+    © 2026 Elevz
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var TEXTS = {
+      pt: {
+        pageTitle: 'Excluir seus dados – Passo a Passo',
+        back: '← Passo a Passo',
+        title: 'Excluir seus dados',
+        intro: 'Use o formulário abaixo para pedir que a Elevz apague os dados do app Passo a Passo guardados nos nossos servidores.',
+        deviceTitle: 'O que fica no seu aparelho',
+        deviceText: 'Os tutoriais, as fotos, os vídeos, os áudios e o idioma escolhido ficam só no seu celular e nunca são enviados para nós. Para apagá-los, exclua o tutorial no app ou desinstale o Passo a Passo.',
+        deletedTitle: 'O que este formulário exclui',
+        deletedText: 'As sugestões, problemas e elogios que você enviou pelo app informando o seu email, com tudo o que foi junto:',
+        deletedItem1: 'o texto da mensagem;',
+        deletedItem2: 'o email informado, se você preencheu;',
+        anonymousNote: 'Sugestões enviadas sem email são anônimas: não guardam nada que identifique você.',
+        deletedItem3: 'a versão do app e do Android, o modelo do aparelho e o idioma do app.',
+        notKeptTitle: 'O que não guardamos',
+        notKeptText: 'As estatísticas de uso do Firebase Analytics não identificam você e são apagadas automaticamente pelo Google em até 2 meses. O código usado para enviar notificações deixa de valer quando você desinstala o app. Nenhum desses dados é mantido pela Elevz.',
+        howTitle: 'Como funciona',
+        how1: 'Preencha e envie o formulário.',
+        how2: 'Localizamos e apagamos os seus dados em até 30 dias.',
+        how3: 'Você recebe a confirmação no email informado.',
+        formTitle: 'Solicitar exclusão',
+        formWarning: 'Os dados apagados não podem ser recuperados.',
+        emailLabel: 'Seu email',
+        emailHint: 'Use o mesmo email que você informou ao enviar sugestões pelo app. A confirmação será enviada para ele.',
+        check: 'Quanto é {a} + {b}?',
+        confirm: 'Quero que meus dados do Passo a Passo sejam excluídos.',
+        submit: 'Enviar solicitação',
+        privacy: 'Política de privacidade',
+        sending: 'Enviando...',
+        success: 'Recebemos sua solicitação. Vamos responder em até 30 dias.',
+        invalidEmail: 'Informe um email válido.',
+        needConfirm: 'Marque a confirmação para continuar.',
+        wrongCheck: 'Resposta da verificação incorreta. Tente novamente.',
+        tooFast: 'Por favor, revise o formulário e tente novamente.',
+        failed: 'Não foi possível enviar agora. Tente novamente ou escreva para elevzapps@gmail.com.'
+      },
+      en: {
+        pageTitle: 'Delete your data – Passo a Passo',
+        back: '← Passo a Passo',
+        title: 'Delete your data',
+        intro: 'Use the form below to ask Elevz to delete the Passo a Passo app data stored on our servers.',
+        deviceTitle: 'What stays on your device',
+        deviceText: 'Your tutorials, photos, videos, audio and chosen language stay only on your phone and are never sent to us. To delete them, delete the tutorial in the app or uninstall Passo a Passo.',
+        deletedTitle: 'What this form deletes',
+        deletedText: 'The suggestions, problem reports and praise you sent from the app with your email, along with everything sent with them:',
+        deletedItem1: 'the message text;',
+        deletedItem2: 'the email you entered, if any;',
+        anonymousNote: 'Suggestions sent without an email are anonymous: they keep nothing that identifies you.',
+        deletedItem3: 'the app and Android versions, the device model and the app language.',
+        notKeptTitle: 'What we do not keep',
+        notKeptText: 'Firebase Analytics usage statistics do not identify you and are automatically deleted by Google within 2 months. The code used to send notifications stops working when you uninstall the app. Elevz does not keep any of this data.',
+        howTitle: 'How it works',
+        how1: 'Fill in and send the form.',
+        how2: 'We find and delete your data within 30 days.',
+        how3: 'You receive a confirmation at the email you entered.',
+        formTitle: 'Request deletion',
+        formWarning: 'Deleted data cannot be recovered.',
+        emailLabel: 'Your email',
+        emailHint: 'Use the same email you entered when sending suggestions from the app. We will send the confirmation to it.',
+        check: 'What is {a} + {b}?',
+        confirm: 'I want my Passo a Passo data to be deleted.',
+        submit: 'Send request',
+        privacy: 'Privacy policy',
+        sending: 'Sending...',
+        success: 'We received your request. We will reply within 30 days.',
+        invalidEmail: 'Please enter a valid email.',
+        needConfirm: 'Please check the confirmation box to continue.',
+        wrongCheck: 'Wrong answer to the check. Please try again.',
+        tooFast: 'Please review the form and try again.',
+        failed: 'We could not send it right now. Try again or write to elevzapps@gmail.com.'
+      },
+      es: {
+        pageTitle: 'Eliminar tus datos – Passo a Passo',
+        back: '← Passo a Passo',
+        title: 'Eliminar tus datos',
+        intro: 'Usa el formulario de abajo para pedir que Elevz elimine los datos de la app Passo a Passo guardados en nuestros servidores.',
+        deviceTitle: 'Lo que queda en tu dispositivo',
+        deviceText: 'Los tutoriales, las fotos, los videos, los audios y el idioma elegido quedan solo en tu celular y nunca se nos envían. Para borrarlos, elimina el tutorial en la app o desinstala Passo a Passo.',
+        deletedTitle: 'Lo que elimina este formulario',
+        deletedText: 'Las sugerencias, problemas y elogios que enviaste desde la app con tu email, con todo lo que se envió junto:',
+        deletedItem1: 'el texto del mensaje;',
+        deletedItem2: 'el email ingresado, si lo completaste;',
+        anonymousNote: 'Las sugerencias enviadas sin email son anónimas: no guardan nada que te identifique.',
+        deletedItem3: 'la versión de la app y de Android, el modelo del dispositivo y el idioma de la app.',
+        notKeptTitle: 'Lo que no guardamos',
+        notKeptText: 'Las estadísticas de uso de Firebase Analytics no te identifican y Google las elimina automáticamente en hasta 2 meses. El código usado para enviar notificaciones deja de funcionar cuando desinstalas la app. Elevz no conserva ninguno de estos datos.',
+        howTitle: 'Cómo funciona',
+        how1: 'Completa y envía el formulario.',
+        how2: 'Buscamos y eliminamos tus datos en hasta 30 días.',
+        how3: 'Recibes la confirmación en el email ingresado.',
+        formTitle: 'Solicitar eliminación',
+        formWarning: 'Los datos eliminados no se pueden recuperar.',
+        emailLabel: 'Tu email',
+        emailHint: 'Usa el mismo email que ingresaste al enviar sugerencias desde la app. Te enviaremos la confirmación a ese email.',
+        check: '¿Cuánto es {a} + {b}?',
+        confirm: 'Quiero que se eliminen mis datos de Passo a Passo.',
+        submit: 'Enviar solicitud',
+        privacy: 'Política de privacidad',
+        sending: 'Enviando...',
+        success: 'Recibimos tu solicitud. Responderemos en hasta 30 días.',
+        invalidEmail: 'Ingresa un email válido.',
+        needConfirm: 'Marca la confirmación para continuar.',
+        wrongCheck: 'Respuesta de verificación incorrecta. Inténtalo de nuevo.',
+        tooFast: 'Revisa el formulario e inténtalo de nuevo.',
+        failed: 'No pudimos enviarlo ahora. Inténtalo de nuevo o escribe a elevzapps@gmail.com.'
+      }
+    };
+    var SUPPORTED = ['pt', 'en', 'es'];
+    var HTML_LANG = { pt: 'pt-BR', en: 'en', es: 'es' };
+
+    var form = document.getElementById('deletion-form');
+    var status = document.getElementById('df-status');
+    var checkLabel = document.getElementById('df-check-label');
+    var a = Math.floor(Math.random() * 8) + 1;
+    var b = Math.floor(Math.random() * 8) + 1;
+    var loadTime = Date.now();
+    var language = detectLanguage();
+
+    function readSavedLanguage() {
+      try {
+        return window.localStorage.getItem('passo-a-passo.lang');
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function saveLanguage(code) {
+      try {
+        window.localStorage.setItem('passo-a-passo.lang', code);
+      } catch (error) {}
+      try {
+        var url = new URL(window.location.href);
+        url.searchParams.set('lang', code);
+        window.history.replaceState(null, '', url);
+      } catch (error) {}
+    }
+
+    function detectLanguage() {
+      var fromUrl = new URLSearchParams(window.location.search).get('lang');
+      var candidates = [fromUrl, readSavedLanguage()].concat(navigator.languages || [navigator.language]);
+      for (var i = 0; i < candidates.length; i++) {
+        var code = (candidates[i] || '').slice(0, 2).toLowerCase();
+        if (SUPPORTED.indexOf(code) !== -1) {
+          return code;
+        }
+      }
+      return 'en';
+    }
+
+    function t(key) {
+      return TEXTS[language][key];
+    }
+
+    function applyLanguage(next) {
+      language = next;
+      document.documentElement.lang = HTML_LANG[language];
+      document.title = t('pageTitle');
+      document.querySelectorAll('[data-i18n]').forEach(function (element) {
+        element.textContent = t(element.getAttribute('data-i18n'));
+      });
+      checkLabel.textContent = t('check').replace('{a}', a).replace('{b}', b);
+      document.querySelectorAll('[data-lang]').forEach(function (button) {
+        button.setAttribute('aria-pressed', String(button.getAttribute('data-lang') === language));
+      });
+      showStatus('');
+    }
+
+    function showStatus(text, kind) {
+      status.textContent = text;
+      status.className = 'status' + (kind ? ' status--' + kind : '');
+    }
+
+    document.querySelectorAll('[data-lang]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        applyLanguage(button.getAttribute('data-lang'));
+        saveLanguage(language);
+      });
+    });
+
+    applyLanguage(language);
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      showStatus('');
+
+      if (form._honey.value) {
+        showStatus(t('success'), 'ok');
+        form.reset();
+        return;
+      }
+
+      if (!form.email.checkValidity() || !form.email.value.trim()) {
+        showStatus(t('invalidEmail'), 'error');
+        form.email.focus();
+        return;
+      }
+
+      if (!form.confirm.checked) {
+        showStatus(t('needConfirm'), 'error');
+        return;
+      }
+
+      if (Number(form.check.value.trim()) !== a + b) {
+        showStatus(t('wrongCheck'), 'error');
+        form.check.focus();
+        return;
+      }
+
+      if (Date.now() - loadTime < 3000) {
+        showStatus(t('tooFast'), 'error');
+        return;
+      }
+
+      var submitButton = form.querySelector('.submit');
+      submitButton.disabled = true;
+      showStatus(t('sending'));
+
+      fetch('https://formsubmit.co/ajax/elevzapps@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          app: 'Passo a Passo (com.passos.br)',
+          email: form.email.value.trim(),
+          language: language,
+          _replyto: form.email.value.trim(),
+          _subject: 'Exclusão de dados – Passo a Passo',
+          _captcha: false,
+        }),
+      })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('network');
+          }
+          return response.json();
+        })
+        .then(function () {
+          showStatus(t('success'), 'ok');
+          form.reset();
+        })
+        .catch(function () {
+          showStatus(t('failed'), 'error');
+        })
+        .finally(function () {
+          submitButton.disabled = false;
+        });
+    });
+  })();
+</script>
+</body>
+</html>
